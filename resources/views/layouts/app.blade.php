@@ -36,11 +36,15 @@
         </nav>
         <div class="border-t border-slate-800 p-4">
             <div class="flex items-center gap-3">
-                <div class="grid h-9 w-9 place-items-center rounded-full bg-slate-700 text-sm font-semibold text-white">A</div>
-                <div>
-                    <p class="text-sm font-medium text-white">Admin Kaldera</p>
-                    <p class="text-xs text-slate-400">admin@kaldera.id</p>
+                <div class="grid h-9 w-9 place-items-center rounded-full bg-slate-700 text-sm font-semibold text-white">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</div>
+                <div class="min-w-0 flex-1">
+                    <p class="truncate text-sm font-medium text-white">{{ auth()->user()->name }}</p>
+                    <p class="truncate text-xs text-slate-400">{{ '@' . auth()->user()->username }}</p>
                 </div>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" title="Keluar" class="rounded-lg px-2 py-1 text-xs text-slate-400 transition hover:bg-slate-800 hover:text-red-400">Keluar</button>
+                </form>
             </div>
         </div>
     </aside>

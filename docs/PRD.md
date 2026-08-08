@@ -17,7 +17,7 @@ Dashboard admin single-page untuk memantau performa penjualan **Toko Kaldera** (
 ## 2. Asumsi
 
 - Toko Kaldera adalah toko **perlengkapan outdoor/camping** (dapat disesuaikan).
-- Fase 1 **tanpa autentikasi**; login ditambahkan pada fase berikutnya.
+- Fase 1 menyertakan **login sederhana** (username + password, tanpa hak akses lanjutan).
 - Data dummy dihasilkan dari **seeder** (Faker `id_ID`) dan di-reload kapan pun.
 
 ## 3. Ruang Lingkup
@@ -45,6 +45,7 @@ Dashboard admin single-page untuk memantau performa penjualan **Toko Kaldera** (
 | F-6 | Tabel pesanan terbaru: search (nomor/nama pelanggan), filter status, sort kolom |
 | F-7 | Tabel produk stok menipis (stok ≤ 5), dengan badge status |
 | F-8 | Filter rentang waktu memicu reload data (fetch JSON `GET /api/dashboard?range=...`) tanpa reload halaman |
+| F-9 | Login admin: username & password wajib minimal 5 karakter, pesan error validasi, logout, proteksi seluruh halaman (middleware `auth`) |
 
 ## 5. Struktur Data
 
@@ -74,6 +75,6 @@ Dashboard admin single-page untuk memantau performa penjualan **Toko Kaldera** (
 
 ## 8. Roadmap Fase Lanjutan
 
-1. **Fase 2** — Autentikasi admin + CRUD produk & kategori.
+1. **Fase 2** — Peran & hak akses admin + CRUD produk & kategori.
 2. **Fase 3** — Manajemen pesanan (ubah status), detail pelanggan.
 3. **Fase 4** — Ekspor CSV/PDF, notifikasi stok via email.
