@@ -14,6 +14,15 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        \App\Models\User::firstOrCreate(
+            ['username' => 'admin'],
+            [
+                'name' => 'Admin Kaldera',
+                'email' => 'admin@kaldera.id',
+                'password' => bcrypt('admin123'),
+            ],
+        );
+
         $categories = [
             ['name' => 'Tenda', 'slug' => 'tenda', 'color' => '#6366f1'],
             ['name' => 'Carrier & Ransel', 'slug' => 'carrier', 'color' => '#f59e0b'],
