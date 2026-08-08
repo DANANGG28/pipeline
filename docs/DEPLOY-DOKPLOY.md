@@ -31,9 +31,11 @@ Tambahkan (yang tak ada akan di-generate entrypoint):
 | `APP_ENV` | `production` |
 | `APP_DEBUG` | `false` |
 | `APP_URL` | `https://domain-publik-anda` |
-| `SEED_DB` | `true` (isi dummy sekali; flag `.seeded` mencegah re-seed) |
+| `SEED_DB` | `false` (jangan seed dummy di produksi) |
+| `ADMIN_PASSWORD` | **wajib** — password admin pertama |
+| `ADMIN_USERNAME` | optional, default `admin` |
 
-`APP_KEY` dibuat otomatis saat container pertama jalan.
+`APP_KEY` dibuat otomatis saat container pertama jalan. Admin pertama dibuat otomatis oleh entrypoint bila tabel user kosong dan `ADMIN_PASSWORD` diisi.
 
 ## 6. Domain & SSL
 

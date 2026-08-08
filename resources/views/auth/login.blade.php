@@ -63,6 +63,8 @@
         </form>
     </div>
 
-    <p class="mt-6 text-center text-xs text-slate-500">Demo: username <code class="rounded bg-slate-800 px-1.5 py-0.5 text-slate-300">admin</code> · password <code class="rounded bg-slate-800 px-1.5 py-0.5 text-slate-300">admin123</code></p>
+    @if (app()->environment('local'))
+        <p class="mt-6 text-center text-xs text-slate-500">Demo: username <code class="rounded bg-slate-800 px-1.5 py-0.5 text-slate-300">admin</code> · password <code class="rounded bg-slate-800 px-1.5 py-0.5 text-slate-300">admin123</code></p>
+    @endif
 </div>
 @endsection

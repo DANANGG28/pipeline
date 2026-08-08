@@ -18,9 +18,14 @@
             </div>
         </div>
         <nav class="mt-2 flex-1 space-y-1 px-3">
-            <a href="#" class="flex items-center gap-3 rounded-lg bg-indigo-600 px-3 py-2.5 text-sm font-medium text-white">
+            <a href="{{ route('dashboard') }}" class="flex items-center gap-3 rounded-lg bg-indigo-600 px-3 py-2.5 text-sm font-medium text-white">
                 <span>📊</span> Dashboard
             </a>
+            @if (auth()->user()->is_admin)
+                <a href="{{ route('users.index') }}" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white">
+                    <span>👥</span> Pengguna
+                </a>
+            @endif
             <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white">
                 <span>📦</span> Produk <span class="ml-auto rounded bg-slate-700 px-1.5 py-0.5 text-[10px]">40</span>
             </a>
@@ -30,13 +35,10 @@
             <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white">
                 <span>👥</span> Pelanggan
             </a>
-            <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white">
-                <span>💳</span> Pembayaran
-            </a>
         </nav>
         <div class="border-t border-slate-800 p-4">
             <div class="flex items-center gap-3">
-                <div class="grid h-9 w-9 place-items-center rounded-full bg-slate-700 text-sm font-semibold text-white">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</div>
+                <div class="grid h-9 w-9 place-items-center rounded-full bg-slate-700 text-sm font-semibold text-white">{{ mb_strtoupper(mb_substr(auth()->user()->name, 0, 1)) }}</div>
                 <div class="min-w-0 flex-1">
                     <p class="truncate text-sm font-medium text-white">{{ auth()->user()->name }}</p>
                     <p class="truncate text-xs text-slate-400">{{ '@' . auth()->user()->username }}</p>
@@ -52,7 +54,7 @@
     <div class="flex min-w-0 flex-1 flex-col">
         <header class="flex items-center justify-between border-b border-slate-200 bg-white px-4 py-3 lg:px-8">
             <div>
-                <h1 class="text-lg font-bold">Dashboard</h1>
+                <h1 class="text-lg font-bold">@yield('page-header', 'Dashboard')</h1>
                 <p class="text-xs text-slate-500" x-data x-text="new Intl.DateTimeFormat('id-ID', { weekday:'long', day:'numeric', month:'long', year:'numeric' }).format(new Date())"></p>
             </div>
             <div class="flex items-center gap-2 text-sm text-slate-500">
